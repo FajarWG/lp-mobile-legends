@@ -1,11 +1,10 @@
-import { Button } from "./components/ui/button";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
-      <div>Mobile Legends Pages</div>
-      <Button>Click Me</Button>
-    </>
+    <div className="min-h-screen bg-[#0a0e27]">
+      <Navbar />
+    </div>
   );
 }
 
