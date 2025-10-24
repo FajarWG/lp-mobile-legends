@@ -49,6 +49,38 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Mobile Legends - Blue Theme Colors */
+  --ml-primary-50: #e6f1ff;
+  --ml-primary-100: #b3d9ff;
+  --ml-primary-200: #80c1ff;
+  --ml-primary-300: #4da9ff;
+  --ml-primary-400: #1a91ff;
+  --ml-primary-500: #0066cc;
+  --ml-primary-600: #0052a3;
+  --ml-primary-700: #003d7a;
+  --ml-primary-800: #002952;
+  --ml-primary-900: #001633;
+
+  --ml-dark-500: #0a1929;
+  --ml-dark-600: #081420;
+  --ml-dark-700: #060f18;
+  --ml-dark-800: #040a10;
+  --ml-dark-900: #020508;
+
+  --ml-accent-400: #0099cc;
+  --ml-accent-500: #0088b8;
+  --ml-accent-600: #006d94;
+  --ml-accent-700: #005270;
+
+  --ml-cyan-400: #00d9e6;
+  --ml-cyan-500: #00bfcc;
+  --ml-cyan-600: #0099a3;
+  --ml-cyan-700: #00737a;
+
+  --ml-navy-500: #0d2137;
+  --ml-navy-600: #0a1a2c;
+  --ml-navy-700: #081421;
 }
 
 @media (prefers-color-scheme: light) {
@@ -152,16 +184,24 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0e27;
+  background: var(--ml-dark-500);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8b5cf6 0%, #ec4899 100%);
+  background: linear-gradient(
+    180deg,
+    var(--ml-primary-500) 0%,
+    var(--ml-cyan-500) 100%
+  );
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #7c3aed 0%, #db2777 100%);
+  background: linear-gradient(
+    180deg,
+    var(--ml-primary-600) 0%,
+    var(--ml-cyan-600) 100%
+  );
 }
 
 /* Smooth scrolling */

@@ -1,123 +1,112 @@
-import { useState } from "react";
-import { Menu, X, Globe } from "lucide-react";
+import { Globe, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const menuItems = [
+    { href: "#news", label: "News" },
+    { href: "#hero", label: "Hero" },
+    { href: "#videos", label: "Videos" },
+    { href: "#esports", label: "Esports" },
+  ];
+
+  const socialLinks = [
+    { href: "https://www.facebook.com/MobileLegendsGame", icon: Facebook },
+    { href: "https://twitter.com/MobileLegendsOL", icon: Twitter },
+    { href: "https://www.instagram.com/mobilelegendsgame", icon: Instagram },
+    {
+      href: "https://www.youtube.com/c/MobileLegendsOfficialYT",
+      icon: Youtube,
+    },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e27]/95 backdrop-blur-sm border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+      <div className="max-w-7xl mx-auto p-4 ">
         <div className="flex items-center justify-between h-16">
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">
-              <a
-                href="#news"
-                className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                News
-              </a>
-              <a
-                href="#hero"
-                className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Hero
-              </a>
-              <a
-                href="#videos"
-                className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Videos
-              </a>
-              <a
-                href="#esports"
-                className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Esports
-              </a>
+              {menuItems.map((item, index) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
             </div>
           </div>
 
-          {/* Logo */}
-          <div className="flex items-center">
+          <motion.div
+            className="flex items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
+            whileHover={{ scale: 1.05 }}
+          >
             <img
               src="https://akmweb.youngjoygame.com/web/gms/image/d24e0caa1d6ffacceac10e06c4b7663c.png"
               alt="Mobile Legends"
               className="h-10 w-auto"
             />
-          </div>
+          </motion.div>
 
-          {/* Right Side Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors">
+            <motion.button
+              className="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
+            >
               <Globe className="w-4 h-4" />
               <span className="text-sm">EN</span>
-            </button>
-            <div className="flex space-x-2">
-              <a href="#" className="text-white hover:text-blue-400">
-                <img
-                  src="https://akmweb.youngjoygame.com/web/gms/image/464414253065cb437d74b31d60083013.png"
-                  alt="App Store"
-                  className="h-8"
-                />
-              </a>
-              <a href="#" className="text-white hover:text-blue-400">
-                <img
-                  src="https://akmweb.youngjoygame.com/web/gms/image/0a868da9764348ad28cd4e440a034631.png"
-                  alt="Google Play"
-                  className="h-8"
-                />
-              </a>
-            </div>
-          </div>
+            </motion.button>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-blue-400 p-2"
+            <div className="flex items-center space-x-3 border-l border-white/20 pl-4">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={social.href}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-blue-400 transition-colors"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.6 + index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 1, ease: "easeOut" }}
             >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
+              <Button variant={"outline"} size={"lg"}>
+                Login
+              </Button>
+            </motion.div>
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-[#0a0e27] border-t border-white/10">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <a
-              href="#news"
-              className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium"
-            >
-              NEWS
-            </a>
-            <a
-              href="#hero"
-              className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium"
-            >
-              HERO
-            </a>
-            <a
-              href="#videos"
-              className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium"
-            >
-              VIDEOS
-            </a>
-            <a
-              href="#esports"
-              className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium"
-            >
-              ESPORTS
-            </a>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }
