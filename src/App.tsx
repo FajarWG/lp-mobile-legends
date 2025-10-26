@@ -1,6 +1,7 @@
 import HeroHeader from "./components/HeroHeader";
 import NewsSection from "./components/NewsSection";
 import HeroSelection from "./components/HeroSelection";
+import Footer from "./components/Footer";
 import { motion } from "framer-motion";
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
         <HeroHeader />
         <HeroSelection />
         <NewsSection />
+        <Footer />
       </div>
     </div>
   );
