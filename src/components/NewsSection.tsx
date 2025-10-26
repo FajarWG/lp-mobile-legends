@@ -69,7 +69,7 @@ export default function NewsSection() {
   ];
 
   return (
-    <section className="py-20 bg-(--ml-navy-500)">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center gap-4 mb-8">
           <div className="flex items-center gap-3">

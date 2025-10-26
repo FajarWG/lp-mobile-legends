@@ -1,8 +1,20 @@
 import { Globe, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const menuItems = [
     { href: "#news", label: "News" },
     { href: "#hero", label: "Hero" },
@@ -21,7 +33,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-black/20 backdrop-blur-xs shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto p-4 ">
         <div className="flex items-center justify-between h-16">
           <div className="hidden md:block">
