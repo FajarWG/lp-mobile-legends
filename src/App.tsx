@@ -1,9 +1,9 @@
-import Navbar from "./components/Navbar";
+import HeroHeader from "./components/HeroHeader";
 
 function App() {
   return (
     <div className="min-h-screen bg-[#0a0e27]">
-      <Navbar />
+      <HeroHeader />
     </div>
   );
 }
