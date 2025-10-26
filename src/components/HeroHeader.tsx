@@ -8,10 +8,10 @@ export default function HeroHeader() {
       <div className="relative z-10">
         <Navbar />
 
-        <section className="pt-24 pb-32">
+        <section className="pt-52 pb-32">
           <div className="max-w-7xl mx-auto px-8">
-            <div className="grid grid-cols-2 gap-12 items-center">
-              <div className="text-left space-y-8">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center space-y-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function HeroHeader() {
                     5v5 MOBA Action on Mobile
                   </motion.p>
                   <motion.p
-                    className="text-lg text-gray-200 max-w-xl drop-shadow-md"
+                    className="text-lg text-gray-200 max-w-2xl mx-auto drop-shadow-md"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.9 }}
@@ -50,122 +50,93 @@ export default function HeroHeader() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.1 }}
-                  className="flex items-center gap-4 pt-2"
+                  className="space-y-6"
                 >
-                  <motion.a
-                    href="#"
-                    className="text-white hover:text-blue-400"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <img
-                      src="https://akmweb.youngjoygame.com/web/gms/image/464414253065cb437d74b31d60083013.png"
-                      alt="App Store"
-                      className="h-12"
-                    />
-                  </motion.a>
-                  <motion.a
-                    href="#"
-                    className="text-white hover:text-blue-400"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <img
-                      src="https://akmweb.youngjoygame.com/web/gms/image/0a868da9764348ad28cd4e440a034631.png"
-                      alt="Google Play"
-                      className="h-12"
-                    />
-                  </motion.a>
+                  <div className="flex items-center justify-center gap-4">
+                    <motion.a
+                      href="#"
+                      className="text-white hover:text-blue-400"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <img
+                        src="https://akmweb.youngjoygame.com/web/gms/image/464414253065cb437d74b31d60083013.png"
+                        alt="App Store"
+                        className="h-12"
+                      />
+                    </motion.a>
+                    <motion.a
+                      href="#"
+                      className="text-white hover:text-blue-400"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <img
+                        src="https://akmweb.youngjoygame.com/web/gms/image/0a868da9764348ad28cd4e440a034631.png"
+                        alt="Google Play"
+                        className="h-12"
+                      />
+                    </motion.a>
+                  </div>
+
+                  {/* Feature Cards */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 max-w-4xl mx-auto">
+                    {[
+                      {
+                        title: "Peringkat Hero",
+                        subtitle: "Peringkat kekuatan Hero",
+                        icon: Trophy,
+                      },
+                      {
+                        title: "Pembayaran",
+                        subtitle: "Metode Top Up",
+                        icon: CreditCard,
+                      },
+                      {
+                        title: "Penukaran",
+                        subtitle: "Tukar hadiah Game",
+                        icon: Gift,
+                      },
+                      {
+                        title: "Fan Art",
+                        subtitle: "Desain ciptaan Player",
+                        icon: Palette,
+                      },
+                    ].map((feature, index) => {
+                      const Icon = feature.icon;
+                      return (
+                        <motion.div
+                          key={feature.title}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.4,
+                            delay: index * 0.1 + 1.3,
+                          }}
+                          className="group cursor-pointer"
+                        >
+                          <div className="flex flex-col items-center gap-3 p-4 rounded-lg bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/20 group-hover:scale-105">
+                            <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-white/10">
+                              <Icon
+                                className="w-6 h-6 text-white"
+                                strokeWidth={1.5}
+                              />
+                            </div>
+                            <div className="text-center">
+                              <h3 className="text-xs font-semibold text-white">
+                                {feature.title}
+                              </h3>
+                              <p className="text-[10px] text-gray-400">
+                                {feature.subtitle}
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
                 </motion.div>
               </div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 100, scale: 0.9 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-                className="relative flex justify-center items-center"
-              >
-                <div className="relative">
-                  <motion.div
-                    className="absolute inset-0 bg-linear-to-br from-(--ml-primary-500)/20 to-(--ml-accent-500)/20 rounded-full blur-3xl"
-                    animate={{
-                      scale: [1, 1.1, 1],
-                      opacity: [0.2, 0.3, 0.2],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                  <motion.img
-                    src="/kalea.png"
-                    alt="Hero Kalea"
-                    className="relative z-10 w-full h-auto max-w-2xl drop-shadow-2xl"
-                    animate={{
-                      y: [0, -20, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <section className="pb-20">
-          <div className="max-w-4xl mx-auto px-8">
-            <div className="grid grid-cols-4 gap-6">
-              {[
-                {
-                  title: "Peringkat Hero",
-                  subtitle: "Peringkat kekuatan Hero",
-                  icon: Trophy,
-                },
-                {
-                  title: "Pembayaran",
-                  subtitle: "Metode Top Up",
-                  icon: CreditCard,
-                },
-                {
-                  title: "Penukaran",
-                  subtitle: "Tukar hadiah Game",
-                  icon: Gift,
-                },
-                {
-                  title: "Fan Art",
-                  subtitle: "Desain ciptaan Player",
-                  icon: Palette,
-                },
-              ].map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <motion.div
-                    key={feature.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 1.3 }}
-                    className="group cursor-pointer text-center"
-                  >
-                    <div className="w-20 h-20 mx-auto mb-3 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110">
-                      <Icon
-                        className="w-10 h-10 text-white"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-
-                    <h3 className="text-sm font-semibold text-white mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-xs text-gray-400">{feature.subtitle}</p>
-                  </motion.div>
-                );
-              })}
             </div>
           </div>
         </section>
