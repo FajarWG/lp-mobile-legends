@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 
@@ -93,7 +93,13 @@ export default function HeroSelection() {
   return (
     <section className="relative py-20 mb-10 overflow-hidden " id="hero">
       <div className="max-w-7xl mx-auto px-8">
-        <div className="grid grid-cols-2 gap-16 items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.2, ease: "easeIn",  delay: 0.9 }}
+          className="grid grid-cols-2 gap-16 items-center"
+        >
           <div className="space-y-8">
             <div>
               <span className="text-xs text-gray-400 uppercase tracking-widest">
@@ -120,10 +126,12 @@ export default function HeroSelection() {
             {/* Static Background Circle */}
             <div className="absolute inset-0 bg-gray-500/10 rounded-full blur-3xl scale-90" />
             
+            <AnimatePresence mode="wait">
             <motion.div
               key={currentHero.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5 }}
               className="relative z-10"
             >
@@ -189,8 +197,9 @@ export default function HeroSelection() {
                 </div>
               </div>
             </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
