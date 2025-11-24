@@ -18,19 +18,26 @@ export default function HeroHeader() {
             transition={{ duration: 1, ease: "easeInOut" }}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.8,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <img
-                src="https://akmweb.youngjoygame.com/web/gms/image/d24e0caa1d6ffacceac10e06c4b7663c.png"
-                alt="Loading..."
-                className="h-24 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-              />
+              <motion.div
+                initial={{ filter: "grayscale(100%)" }}
+                animate={{ filter: "grayscale(0%)" }}
+                transition={{
+                  duration: 2,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              >
+                <img
+                  src="https://akmweb.youngjoygame.com/web/gms/image/d24e0caa1d6ffacceac10e06c4b7663c.png"
+                  alt="Loading..."
+                  className="h-24 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
