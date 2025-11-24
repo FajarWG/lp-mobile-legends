@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-export default function Navbar() {
+export default function Navbar({ isLoaded = true }: { isLoaded?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -16,8 +16,8 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { href: "#news", label: "News" },
     { href: "#hero", label: "Hero" },
+    { href: "#news", label: "News" },
     { href: "#videos", label: "Videos" },
     { href: "#fan-art", label: "Fan Art" },
     { href: "#tools", label: "Tools" },
@@ -32,6 +32,9 @@ export default function Navbar() {
       icon: Youtube,
     },
   ];
+
+  // Base delay for all navbar animations
+  const baseDelay = 0.5;
 
   return (
     <nav
@@ -49,10 +52,10 @@ export default function Navbar() {
                   href={item.href}
                   className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors"
                   initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  animate={isLoaded ? { opacity: 1, y: 0 } : {}}
                   transition={{
                     duration: 0.4,
-                    delay: index * 0.1,
+                    delay: baseDelay + index * 0.1,
                     ease: "easeOut",
                   }}
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -67,8 +70,8 @@ export default function Navbar() {
           <motion.div
             className="flex items-center"
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
+            animate={isLoaded ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.4, delay: baseDelay + 0.4, ease: "easeOut" }}
             whileHover={{ scale: 1.05 }}
           >
             <img
@@ -82,8 +85,8 @@ export default function Navbar() {
             <motion.button
               className="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors"
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
+              animate={isLoaded ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.4, delay: baseDelay + 0.5, ease: "easeOut" }}
             >
               <Globe className="w-4 h-4" />
               <span className="text-sm">EN</span>
@@ -98,10 +101,10 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   className="text-white hover:text-blue-400 transition-colors"
                   initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  animate={isLoaded ? { opacity: 1, x: 0 } : {}}
                   transition={{
                     duration: 0.4,
-                    delay: 0.6 + index * 0.1,
+                    delay: baseDelay + 0.6 + index * 0.1,
                     ease: "easeOut",
                   }}
                   whileHover={{ scale: 1.2, rotate: 5 }}
@@ -114,8 +117,8 @@ export default function Navbar() {
 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 1, ease: "easeOut" }}
+              animate={isLoaded ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.4, delay: baseDelay + 1, ease: "easeOut" }}
             >
               <Button variant={"outline"} size={"lg"}>
                 Login
