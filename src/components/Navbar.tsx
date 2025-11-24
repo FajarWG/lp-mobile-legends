@@ -19,7 +19,8 @@ export default function Navbar() {
     { href: "#news", label: "News" },
     { href: "#hero", label: "Hero" },
     { href: "#videos", label: "Videos" },
-    { href: "#esports", label: "Esports" },
+    { href: "#fan-art", label: "Fan Art" },
+    { href: "#tools", label: "Tools" },
   ];
 
   const socialLinks = [

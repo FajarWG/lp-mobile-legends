@@ -17,6 +17,12 @@ export default function HeroSelection() {
         "https://akmweb.youngjoygame.com/web/gms/image/9ea138369ca4a37b4806ac64998df054.webp",
       thumbnail:
         "https://akmweb.youngjoygame.com/web/gms/image/9ea138369ca4a37b4806ac64998df054.webp",
+      stats: {
+        durability: 40,
+        offense: 90,
+        abilityEffects: 60,
+        difficulty: 70,
+      },
     },
     {
       id: 2,
@@ -29,6 +35,12 @@ export default function HeroSelection() {
         "https://akmweb.youngjoygame.com/web/gms/image/10cf23ade94859fd7f6a877c828c0131.webp",
       thumbnail:
         "https://akmweb.youngjoygame.com/web/gms/image/10cf23ade94859fd7f6a877c828c0131.webp",
+      stats: {
+        durability: 80,
+        offense: 85,
+        abilityEffects: 50,
+        difficulty: 60,
+      },
     },
     {
       id: 3,
@@ -41,6 +53,12 @@ export default function HeroSelection() {
         "https://akmweb.youngjoygame.com/web/gms/image/3a7693b9a565b4e1d67d57ae73eb5297.webp",
       thumbnail:
         "https://akmweb.youngjoygame.com/web/gms/image/3a7693b9a565b4e1d67d57ae73eb5297.webp",
+      stats: {
+        durability: 30,
+        offense: 95,
+        abilityEffects: 90,
+        difficulty: 80,
+      },
     },
     {
       id: 4,
@@ -53,6 +71,12 @@ export default function HeroSelection() {
         "https://akmweb.youngjoygame.com/web/gms/image/adaf737c13d48204dc39f4b48de91ac8.webp",
       thumbnail:
         "https://akmweb.youngjoygame.com/web/gms/image/adaf737c13d48204dc39f4b48de91ac8.webp",
+      stats: {
+        durability: 70,
+        offense: 40,
+        abilityEffects: 85,
+        difficulty: 50,
+      },
     },
   ];
 
@@ -67,7 +91,7 @@ export default function HeroSelection() {
   }, [heroes.length]);
 
   return (
-    <section className="relative py-24 overflow-hidden ">
+    <section className="relative py-20 mb-10 overflow-hidden " id="hero">
       <div className="max-w-7xl mx-auto px-8">
         <div className="grid grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
@@ -92,54 +116,80 @@ export default function HeroSelection() {
             </div>
           </div>
 
-          <motion.div
-            key={currentHero.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-linear-to-br from-(--ml-primary-500)/20 to-(--ml-accent-500)/20 rounded-full blur-3xl scale-75" />
-            <div className="absolute -inset-4 bg-white/5 rounded-full" />
-
+          <div className="relative group">
+            {/* Static Background Circle */}
+            <div className="absolute inset-0 bg-gray-500/10 rounded-full blur-3xl scale-90" />
+            
             <motion.div
-              className="relative"
-              animate={{
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              key={currentHero.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative z-10"
             >
-              <img
-                src={currentHero.image}
-                alt={currentHero.name}
-                className="relative w-full h-auto drop-shadow-2xl"
-              />
-            </motion.div>
+              <motion.div
+                className="relative"
+                animate={{
+                  y: [0, -15, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <img
+                  src={currentHero.image}
+                  alt={currentHero.name}
+                  className="relative w-full h-auto drop-shadow-2xl"
+                />
+              </motion.div>
 
-            <div className="absolute bottom-8 left-8 right-8">
-              <motion.h3
-                key={`name-${currentHero.id}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-5xl font-black text-white italic mb-2"
-              >
-                {currentHero.name.toUpperCase()}
-              </motion.h3>
-              <motion.p
-                key={`role-${currentHero.id}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-gray-300 text-sm"
-              >
-                {currentHero.specialty.join(" • ")}
-              </motion.p>
-            </div>
-          </motion.div>
+              <div className="absolute bottom-8 left-8 right-8">
+                <motion.h3
+                  key={`name-${currentHero.id}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-5xl font-black text-white italic mb-2"
+                >
+                  {currentHero.name.toUpperCase()}
+                </motion.h3>
+                <motion.p
+                  key={`role-${currentHero.id}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-gray-300 text-sm"
+                >
+                  {currentHero.specialty.join(" • ")}
+                </motion.p>
+
+                {/* Stats Slide-up Section */}
+                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                  <div className="overflow-hidden">
+                    <div className="pt-6 grid  gap-x-8 gap-y-3">
+                      {Object.entries(currentHero.stats).map(([key, value]) => (
+                        <div key={key} className="space-y-1">
+                          <div className="flex justify-between text-[10px] text-gray-300 uppercase tracking-wider">
+                            <span>{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                            <span>{value}</span>
+                          </div>
+                          <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${value}%` }}
+                              transition={{ duration: 0.5, delay: 0.1 }}
+                              className="h-full bg-white shadow-[0_0_8px_rgba(250,204,21,0.5)]"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
