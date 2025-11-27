@@ -70,24 +70,30 @@ export default function NewsSection() {
 
   return (
     <section className="py-20 relative overflow-hidden">
-       {/* Background Elements */}
-       {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/50 pointer-events-none" /> */}
+      {/* Background Elements */}
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/50 pointer-events-none" /> */}
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-8 relative z-1">
         <div className="flex items-center justify-between mb-12">
           <div className="flex items-center gap-4">
             <div>
-              <h2 className="text-4xl font-black text-white tracking-tight italic">LATEST NEWS</h2>
-              <p className="text-gray-400 text-sm mt-1">Stay updated with the Land of Dawn</p>
+              <h2 className="text-4xl font-black text-white tracking-tight italic">
+                LATEST NEWS
+              </h2>
+              <p className="text-gray-400 text-sm mt-1">
+                Stay updated with the Land of Dawn
+              </p>
             </div>
           </div>
-          
+
           <motion.button
             className="group flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all duration-300 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-sm font-bold text-white tracking-wide">VIEW ALL</span>
+            <span className="text-sm font-bold text-white tracking-wide">
+              VIEW ALL
+            </span>
             <ChevronRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </div>
@@ -138,14 +144,16 @@ export default function NewsSection() {
 
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
                 <div className="flex items-center justify-between mb-3">
-                   {item.tag && (
+                  {item.tag && (
                     <span className="px-3 py-1 bg-white text-white-400 text-xs font-bold rounded-lg border border-white backdrop-blur-md">
                       {item.tag}
                     </span>
                   )}
-                  <span className="text-xs text-gray-400 font-medium">{item.date}</span>
+                  <span className="text-xs text-gray-400 font-medium">
+                    {item.date}
+                  </span>
                 </div>
-                
+
                 <h3 className="text-lg font-bold text-white leading-tight mb-4 group-hover:text-white-400 transition-colors line-clamp-2">
                   {item.title}
                 </h3>

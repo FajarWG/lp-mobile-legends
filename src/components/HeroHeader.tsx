@@ -135,23 +135,23 @@ export default function HeroHeader() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 max-w-4xl mx-auto">
                     {[
                       {
-                        title: "Peringkat Hero",
-                        subtitle: "Peringkat kekuatan Hero",
+                        title: "Hero Ranking",
+                        subtitle: "Hero Power Ranking",
                         icon: Trophy,
                       },
                       {
-                        title: "Pembayaran",
-                        subtitle: "Metode Top Up",
+                        title: "Payment",
+                        subtitle: "Top Up Methods",
                         icon: CreditCard,
                       },
                       {
-                        title: "Penukaran",
-                        subtitle: "Tukar hadiah Game",
+                        title: "Redemption",
+                        subtitle: "Game Prize Redemption",
                         icon: Gift,
                       },
                       {
                         title: "Fan Art",
-                        subtitle: "Desain ciptaan Player",
+                        subtitle: "Player Created Designs",
                         icon: Palette,
                       },
                     ].map((feature, index) => {
